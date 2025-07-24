@@ -70,8 +70,6 @@ namespace TagLib.Riff
 		#endregion
 
 
-
-
 		#region Public Static Fields
 
 		/// <summary>
@@ -368,6 +366,14 @@ namespace TagLib.Riff
 			set {
 				year = (value > 0 && value < 10000) ? value.ToString (CultureInfo.InvariantCulture) : string.Empty;
 			}
+		}
+
+		/// <summary>
+		/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+		/// </summary>
+		public override bool IsCompilation {
+			get { return false; }
+			set { }
 		}
 
 		/// <summary>

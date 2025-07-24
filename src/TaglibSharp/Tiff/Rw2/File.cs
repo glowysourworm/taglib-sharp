@@ -24,6 +24,7 @@
 using System;
 using TagLib.IFD;
 using TagLib.Image;
+using TagLib.Interface;
 
 namespace TagLib.Tiff.Rw2
 {
@@ -60,7 +61,7 @@ namespace TagLib.Tiff.Rw2
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 
@@ -199,9 +200,9 @@ namespace TagLib.Tiff.Rw2
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
-			Tag tag = base.GetTag (type, false);
+			ITag tag = base.GetTag (type, false);
 			if (tag != null) {
 				return tag;
 			}

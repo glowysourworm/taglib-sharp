@@ -24,6 +24,8 @@
 using System;
 using System.Collections.Generic;
 
+using TagLib.Interface;
+
 namespace TagLib.Asf
 {
 	/// <summary>
@@ -43,12 +45,12 @@ namespace TagLib.Asf
 		/// <summary>
 		///    Contains the file's tag.
 		/// </summary>
-		Tag asf_tag;
+		Asf.Tag asf_tag;
 
 		/// <summary>
 		///    Contains the file's properties.
 		/// </summary>
-		Properties properties;
+		IProperties properties;
 
 		#endregion
 
@@ -152,7 +154,7 @@ namespace TagLib.Asf
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override TagLib.Tag Tag {
+		public override ITag Tag {
 			get { return asf_tag; }
 		}
 
@@ -165,7 +167,7 @@ namespace TagLib.Asf
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 
@@ -230,7 +232,7 @@ namespace TagLib.Asf
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public override TagLib.Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			if (type == TagTypes.Asf)
 				return asf_tag;

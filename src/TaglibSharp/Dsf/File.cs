@@ -25,6 +25,7 @@
 using System;
 
 using TagLib.Id3v2;
+using TagLib.Interface;
 
 namespace TagLib.Dsf
 {
@@ -204,7 +205,7 @@ namespace TagLib.Dsf
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override Tag Tag {
+		public override ITag Tag {
 			get { return tag; }
 		}
 
@@ -217,7 +218,7 @@ namespace TagLib.Dsf
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 
@@ -308,9 +309,9 @@ namespace TagLib.Dsf
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
-			Tag id32_tag = null;
+			ITag id32_tag = null;
 
 			switch (type) {
 			case TagTypes.Id3v2:

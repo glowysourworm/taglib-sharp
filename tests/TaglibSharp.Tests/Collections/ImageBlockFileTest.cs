@@ -1,4 +1,5 @@
 using TagLib.Image;
+using TagLib.Interface;
 
 namespace TaglibSharp.Tests.Collections
 {
@@ -187,12 +188,12 @@ namespace TaglibSharp.Tests.Collections
 		public TestBlockFile (IFileAbstraction abstraction)
 		: base (abstraction) { }
 
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			throw new System.NotImplementedException ();
 		}
 
-		public override Properties Properties => throw new System.NotImplementedException ();
+		public override IProperties Properties => throw new System.NotImplementedException ();
 
 		public override void RemoveTags (TagTypes types)
 		{
@@ -204,7 +205,7 @@ namespace TaglibSharp.Tests.Collections
 			throw new System.NotImplementedException ();
 		}
 
-		public override Tag Tag => throw new System.NotImplementedException ();
+		public override ITag Tag => throw new System.NotImplementedException ();
 
 		public new void AddMetadataBlock (long start, long length)
 		{

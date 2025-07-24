@@ -28,6 +28,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib;
 
 /// <summary>
@@ -146,7 +148,7 @@ public enum TagTypes : uint
 ///    useful to check that the value is stored by re-reading the
 ///    property after it is stored.
 /// </remarks>
-public abstract class Tag
+public abstract class Tag : ITag
 {
 	/// <summary>
 	///    Gets the tag types contained in the current instance.
@@ -1287,6 +1289,14 @@ public abstract class Tag
 	}
 
 	/// <summary>
+	/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+	/// </summary>
+	public virtual bool IsCompilation {
+		get { return false; }
+		set { }
+	}
+
+	/// <summary>
 	///    Gets the same value as <see cref="JoinedPerformers" />.
 	/// </summary>
 	/// <value>
@@ -1542,7 +1552,7 @@ public abstract class Tag
 	/// <exception cref="ArgumentNullException">
 	///    <paramref name="target" /> is <see langword="null" />.
 	/// </exception>
-	public virtual void CopyTo (Tag target, bool overwrite)
+	public virtual void CopyTo (ITag target, bool overwrite)
 	{
 		if (target == null)
 			throw new ArgumentNullException (nameof (target));

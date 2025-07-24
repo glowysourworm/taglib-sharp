@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using TagLib.Gif;
 using TagLib.IFD;
+using TagLib.Interface;
 using TagLib.Jpeg;
 using TagLib.Png;
 using TagLib.Xmp;
@@ -85,7 +86,7 @@ public abstract class File : TagLib.File
 	///    A <see cref="TagLib.Tag" /> object representing all tags
 	///    stored in the current instance.
 	/// </value>
-	public override Tag Tag { get { return ImageTag; } }
+	public override ITag Tag { get { return ImageTag; } }
 
 	/// <summary>
 	///    Gets a abstract representation of all tags stored in the
@@ -157,8 +158,7 @@ public abstract class File : TagLib.File
 	///    matching tag was found and none was created, <see
 	///    langword="null" /> is returned.
 	/// </returns>
-	public override Tag GetTag (TagTypes type,
-									   bool create)
+	public override ITag GetTag (TagTypes type, bool create)
 	{
 		foreach (Tag tag in ImageTag.AllTags) {
 			if ((tag.TagTypes & type) == type)

@@ -269,7 +269,7 @@ namespace TagLib
 		///    or add a specific type of tag in the file, use <see
 		///    cref="GetTag(TagLib.TagTypes,bool)" />.</para>
 		/// </remarks>
-		public abstract Tag Tag { get; }
+		public abstract ITag Tag { get; }
 
 		/// <summary>
 		///    Gets the media properties of the file represented by the
@@ -280,7 +280,7 @@ namespace TagLib
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public abstract Properties Properties { get; }
+		public abstract IProperties Properties { get; }
 
 		/// <summary>
 		///    Gets the tag types contained in the physical file
@@ -537,7 +537,7 @@ namespace TagLib
 		///   // Whatever tag types you want...
 		///}</code>
 		/// </example>
-		public abstract Tag GetTag (TagTypes type, bool create);
+		public abstract ITag GetTag (TagTypes type, bool create);
 
 		/// <summary>
 		///    Gets a tag of a specified type from the current instance.
@@ -591,7 +591,7 @@ namespace TagLib
 		///   return new string [] {};
 		///}</code>
 		/// </example>
-		public Tag GetTag (TagTypes type)
+		public ITag GetTag (TagTypes type)
 		{
 			return GetTag (type, false);
 		}

@@ -29,6 +29,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.NonContainer
 {
 	/// <summary>
@@ -217,9 +219,9 @@ namespace TagLib.NonContainer
 		///    ID3v2 tags are added at the end of the current instance,
 		///    while other tags are added to the beginning.
 		/// </remarks>
-		public TagLib.Tag AddTag (TagTypes type, TagLib.Tag copy)
+		public ITag AddTag (TagTypes type, ITag copy)
 		{
-			TagLib.Tag tag = null;
+			ITag tag = null;
 
 			if (type == TagTypes.Id3v2) {
 				tag = new TagLib.Id3v2.Tag ();
@@ -229,7 +231,7 @@ namespace TagLib.NonContainer
 			}
 
 			if (tag != null) {
-				copy?.CopyTo (tag, true);
+				(copy as TagLib.Tag)?.CopyTo (tag as TagLib.Tag, true);
 
 				AddTag (tag);
 			}

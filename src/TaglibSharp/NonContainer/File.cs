@@ -29,6 +29,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.NonContainer
 {
 	/// <summary>
@@ -172,7 +174,7 @@ namespace TagLib.NonContainer
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override TagLib.Tag Tag {
+		public override ITag Tag {
 			get { return tag; }
 		}
 
@@ -185,7 +187,7 @@ namespace TagLib.NonContainer
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 

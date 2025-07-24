@@ -29,6 +29,7 @@ using System.IO.Compression;
 using TagLib.Image;
 using TagLib.Xmp;
 using System.Text;
+using TagLib.Interface;
 
 namespace TagLib.Png
 {
@@ -151,7 +152,7 @@ namespace TagLib.Png
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 

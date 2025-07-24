@@ -186,6 +186,14 @@ namespace TagLib.Ogg
 		}
 
 		/// <summary>
+		/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+		/// </summary>
+		public override bool IsCompilation {
+			get { return false; }
+			set { }
+		}
+
+		/// <summary>
 		///    Gets and sets the sort names for the individual track title of
 		///    the media described by the current instance.
 		/// </summary>

@@ -160,7 +160,7 @@ namespace TaglibSharp.Tests.FileFormats
 			}
 		}
 
-		public static void SetTags (Tag tag, TestTagLevel level = TestTagLevel.Normal)
+		public static void SetTags (ITag tag, TestTagLevel level = TestTagLevel.Normal)
 		{
 			if (level >= TestTagLevel.Medium) {
 				tag.TitleSort = "title sort, TEST";
@@ -193,7 +193,7 @@ namespace TaglibSharp.Tests.FileFormats
 			tag.Year = 1999;
 		}
 
-		public static void CheckTags (Tag tag, TestTagLevel level = TestTagLevel.Normal)
+		public static void CheckTags (ITag tag, TestTagLevel level = TestTagLevel.Normal)
 		{
 			Assert.AreEqual ("TEST album", tag.Album);
 			Assert.AreEqual ("TEST artist 1; TEST artist 2", tag.JoinedAlbumArtists);
@@ -226,7 +226,7 @@ namespace TaglibSharp.Tests.FileFormats
 			}
 		}
 
-		public static void CheckNoTags (Tag tag)
+		public static void CheckNoTags (ITag tag)
 		{
 			Assert.IsNull (tag.Album);
 			Assert.IsNull (tag.JoinedAlbumArtists);

@@ -1,3 +1,5 @@
+using TagLib.Interface;
+
 using File = TagLib.Asf.File;
 
 namespace TaglibSharp.Tests.TaggingFormats;
@@ -18,21 +20,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Title, "Initial (Null): " + m);
 		});
 
 		file.Tag.Title = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Title, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Title = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Title, "Value Cleared (Null): " + m);
 		});
@@ -43,14 +45,14 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Performers.Length, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Performers = val_mult;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_mult.Length, t.Performers.Length, "Value Set: " + m);
 			for (var i = 0; i < val_mult.Length; i++) {
@@ -60,7 +62,7 @@ public class AsfTest
 
 		file.Tag.Performers = new string[0];
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Performers.Length, "Value Cleared (Zero): " + m);
 		});
@@ -71,14 +73,14 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0, t.AlbumArtists.Length, "Initial (Zero): " + m);
 		});
 
 		file.Tag.AlbumArtists = val_mult;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_mult.Length, t.AlbumArtists.Length, "Value Set: " + m);
 			for (var i = 0; i < val_mult.Length; i++) {
@@ -88,7 +90,7 @@ public class AsfTest
 
 		file.Tag.AlbumArtists = new string[0];
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0, t.AlbumArtists.Length, "Value Cleared (Zero): " + m);
 		});
@@ -99,14 +101,14 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Composers.Length, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Composers = val_mult;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_mult.Length, t.Composers.Length, "Value Set: " + m);
 			for (var i = 0; i < val_mult.Length; i++) {
@@ -116,7 +118,7 @@ public class AsfTest
 
 		file.Tag.Composers = new string[0];
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Composers.Length, "Value Cleared (Zero): " + m);
 		});
@@ -127,21 +129,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Album, "Initial (Null): " + m);
 		});
 
 		file.Tag.Album = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Album, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Album = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Album, "Value Cleared (Null): " + m);
 		});
@@ -152,21 +154,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Comment, "Initial (Null): " + m);
 		});
 
 		file.Tag.Comment = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Comment, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Comment = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Comment, "Value Cleared (Null): " + m);
 		});
@@ -177,14 +179,14 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Genres.Length, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Genres = val_gnre;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_gnre.Length, t.Genres.Length, "Value Set: " + m);
 			for (var i = 0; i < val_gnre.Length; i++) {
@@ -194,7 +196,7 @@ public class AsfTest
 
 		file.Tag.Genres = val_mult;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_mult.Length, t.Genres.Length, "Value Set: " + m);
 			for (var i = 0; i < val_mult.Length; i++) {
@@ -204,7 +206,7 @@ public class AsfTest
 
 		file.Tag.Genres = new string[0];
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Genres.Length, "Value Cleared (Zero): " + m);
 		});
@@ -215,21 +217,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.Year, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Year = 1999;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (1999u, t.Year, "Value Set: " + m);
 		});
 
 		file.Tag.Year = 0;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.Year, "Value Cleared (Zero): " + m);
 		});
@@ -240,21 +242,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.Track, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Track = 199;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (199u, t.Track, "Value Set: " + m);
 		});
 
 		file.Tag.Track = 0;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.Track, "Value Cleared (Zero): " + m);
 		});
@@ -265,21 +267,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.TrackCount, "Initial (Zero): " + m);
 		});
 
 		file.Tag.TrackCount = 199;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (199u, t.TrackCount, "Value Set: " + m);
 		});
 
 		file.Tag.TrackCount = 0;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.TrackCount, "Value Cleared (Zero): " + m);
 		});
@@ -290,21 +292,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.Disc, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Disc = 199;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (199u, t.Disc, "Value Set: " + m);
 		});
 
 		file.Tag.Disc = 0;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.Disc, "Value Cleared (Zero): " + m);
 		});
@@ -315,21 +317,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.DiscCount, "Initial (Zero): " + m);
 		});
 
 		file.Tag.DiscCount = 199;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (199u, t.DiscCount, "Value Set: " + m);
 		});
 
 		file.Tag.DiscCount = 0;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.DiscCount, "Value Cleared (Zero): " + m);
 		});
@@ -340,21 +342,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Lyrics, "Initial (Null): " + m);
 		});
 
 		file.Tag.Lyrics = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Lyrics, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Lyrics = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Lyrics, "Value Cleared (Null): " + m);
 		});
@@ -365,21 +367,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Grouping, "Initial (Null): " + m);
 		});
 
 		file.Tag.Grouping = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Grouping, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Grouping = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Grouping, "Value Cleared (Null): " + m);
 		});
@@ -390,21 +392,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.BeatsPerMinute, "Initial (Zero): " + m);
 		});
 
 		file.Tag.BeatsPerMinute = 199;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (199u, t.BeatsPerMinute, "Value Set: " + m);
 		});
 
 		file.Tag.BeatsPerMinute = 0;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0u, t.BeatsPerMinute, "Value Cleared (Zero): " + m);
 		});
@@ -415,21 +417,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Conductor, "Initial (Null): " + m);
 		});
 
 		file.Tag.Conductor = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Conductor, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Conductor = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Conductor, "Value Cleared (Null): " + m);
 		});
@@ -440,21 +442,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.Copyright, "Initial (Null): " + m);
 		});
 
 		file.Tag.Copyright = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.Copyright, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.Copyright = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.Copyright, "Value Cleared (Null): " + m);
 		});
@@ -479,14 +481,14 @@ public class AsfTest
 
 		pictures[3].Description = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Pictures.Length, "Initial (Zero): " + m);
 		});
 
 		file.Tag.Pictures = pictures;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (pictures.Length, t.Pictures.Length, "Value Set: " + m);
 			for (var i = 0; i < pictures.Length; i++) {
@@ -500,7 +502,7 @@ public class AsfTest
 
 		file.Tag.Pictures = new Picture[0];
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.AreEqual (0, t.Pictures.Length, "Value Cleared (Zero): " + m);
 		});
@@ -511,21 +513,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzArtistId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzArtistId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzArtistId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzArtistId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzArtistId, "Value Cleared (Null): " + m);
 		});
@@ -536,21 +538,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzReleaseId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseId, "Value Cleared (Null): " + m);
 		});
@@ -561,21 +563,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseGroupId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseGroupId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzReleaseGroupId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseGroupId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseGroupId, "Value Cleared (Null): " + m);
 		});
@@ -586,21 +588,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseArtistId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseArtistId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzReleaseArtistId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseArtistId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseArtistId, "Value Cleared (Null): " + m);
 		});
@@ -611,21 +613,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzTrackId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzTrackId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzTrackId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzTrackId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzTrackId, "Value Cleared (Null): " + m);
 		});
@@ -636,21 +638,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzRecordingId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzRecordingId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzRecordingId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzRecordingId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzRecordingId, "Value Cleared (Null): " + m);
 		});
@@ -661,21 +663,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzWorkId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzWorkId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzWorkId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzWorkId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzWorkId, "Value Cleared (Null): " + m);
 		});
@@ -686,21 +688,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzDiscId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzDiscId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzDiscId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzDiscId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzDiscId, "Value Cleared (Null): " + m);
 		});
@@ -711,21 +713,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicIpId, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicIpId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicIpId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicIpId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicIpId, "Value Cleared (Null): " + m);
 		});
@@ -737,21 +739,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.AmazonId, "Initial (Null): " + m);
 		});
 
 		file.Tag.AmazonId = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.AmazonId, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.AmazonId = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.AmazonId, "Value Cleared (Null): " + m);
 		});
@@ -762,21 +764,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseStatus, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseStatus = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzReleaseStatus, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseStatus = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseStatus, "Value Cleared (Null): " + m);
 		});
@@ -787,21 +789,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseType, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseType = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzReleaseType, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseType = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseType, "Value Cleared (Null): " + m);
 		});
@@ -812,21 +814,21 @@ public class AsfTest
 	{
 		var file = CreateFile (out var abst);
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Initial (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseCountry, "Initial (Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseCountry = val_sing;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsFalse (t.IsEmpty, "Value Set (!IsEmpty): " + m);
 			Assert.AreEqual (val_sing, t.MusicBrainzReleaseCountry, "Value Set (!Null): " + m);
 		});
 
 		file.Tag.MusicBrainzReleaseCountry = string.Empty;
 
-		TagTestWithSave (ref file, abst, delegate (Tag t, string m) {
+		TagTestWithSave (ref file, abst, delegate (ITag t, string m) {
 			Assert.IsTrue (t.IsEmpty, "Value Cleared (IsEmpty): " + m);
 			Assert.IsNull (t.MusicBrainzReleaseCountry, "Value Cleared (Null): " + m);
 		});
@@ -880,7 +882,7 @@ public class AsfTest
 		Assert.IsTrue (file.Tag.IsEmpty, "Should be empty.");
 	}
 
-	File CreateFile (out MemoryFileAbstraction abst)
+	ITagFile CreateFile (out MemoryFileAbstraction abst)
 	{
 		byte[] data = {
 			0x30, 0x26, 0xb2, 0x75, 0x8e, 0x66, 0xcf, 0x11,
@@ -899,9 +901,9 @@ public class AsfTest
 		return new File (abst);
 	}
 
-	delegate void TagTestFunc (Tag tag, string msg);
+	delegate void TagTestFunc (ITag tag, string msg);
 
-	void TagTestWithSave (ref File file, MemoryFileAbstraction abst, TagTestFunc testFunc)
+	void TagTestWithSave (ref ITagFile file, MemoryFileAbstraction abst, TagTestFunc testFunc)
 	{
 		testFunc (file.Tag, "Before Save");
 		file.Save ();

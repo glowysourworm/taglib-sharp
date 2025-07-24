@@ -30,6 +30,7 @@ using System.IO;
 
 using TagLib.IFD;
 using TagLib.Image;
+using TagLib.Interface;
 using TagLib.Xmp;
 
 namespace TagLib.Jpeg
@@ -200,7 +201,7 @@ namespace TagLib.Jpeg
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 
@@ -212,7 +213,7 @@ namespace TagLib.Jpeg
 		///  Gets a tag of a specified type from the current instance, optionally creating a
 		/// new tag if possible.
 		/// </summary>
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			if (type == TagTypes.XMP) {
 				foreach (Tag tag in ImageTag.AllTags) {

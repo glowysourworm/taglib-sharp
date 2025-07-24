@@ -31,6 +31,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 
+using TagLib.Interface;
+
 namespace TagLib.Ape
 {
 	/// <summary>
@@ -38,7 +40,7 @@ namespace TagLib.Ape
 	///    cref="T:System.Collections.Generic.IEnumerable`1" /> to provide a representation of an APEv2
 	///    tag which can be read from and written to disk.
 	/// </summary>
-	public class Tag : TagLib.Tag, IEnumerable<string>
+	public class Tag : TagLib.Tag, ITag, IEnumerable<string>
 	{
 
 		#region Private Static Fields
@@ -1794,6 +1796,15 @@ namespace TagLib.Ape
 		}
 
 		/// <summary>
+		/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+		/// </summary>
+		public override bool IsCompilation
+		{
+			get { return false; }
+			set {  }
+		}
+
+		/// <summary>
 		///    Gets whether or not the current instance is empty.
 		/// </summary>
 		/// <value>
@@ -1834,7 +1845,7 @@ namespace TagLib.Ape
 		/// <exception cref="ArgumentNullException">
 		///    <paramref name="target" /> is <see langword="null" />.
 		/// </exception>
-		public override void CopyTo (TagLib.Tag target, bool overwrite)
+		public override void CopyTo (ITag target, bool overwrite)
 		{
 			if (target == null)
 				throw new ArgumentNullException (nameof (target));

@@ -23,6 +23,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.Image.NoMetadata
 {
 	/// <summary>
@@ -68,7 +70,7 @@ namespace TagLib.Image.NoMetadata
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return null; }
 		}
 

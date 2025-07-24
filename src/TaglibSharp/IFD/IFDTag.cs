@@ -574,6 +574,14 @@ namespace TagLib.IFD
 			}
 		}
 
+		/// <summary>
+		/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+		/// </summary>
+		public override bool IsCompilation {
+			get { return false; }
+			set { }
+		}
+
 		#endregion
 
 		#region Private Methods

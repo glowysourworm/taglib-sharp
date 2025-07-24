@@ -25,6 +25,8 @@
 //
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.Audible
 {
 	/// <summary>
@@ -220,7 +222,7 @@ namespace TagLib.Audible
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public override TagLib.Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			if (type == TagTypes.AudibleMetadata)
 				return tag;
@@ -242,7 +244,7 @@ namespace TagLib.Audible
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override TagLib.Tag Tag {
+		public override ITag Tag {
 			get { return tag; }
 		}
 
@@ -255,7 +257,7 @@ namespace TagLib.Audible
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties { get; } = new Properties ();
+		public override IProperties Properties { get; } = new Properties ();
 
 		#endregion
 	}

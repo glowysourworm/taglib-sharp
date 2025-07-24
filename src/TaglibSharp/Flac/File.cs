@@ -28,6 +28,8 @@
 using System;
 using System.Collections.Generic;
 
+using TagLib.Interface;
+
 namespace TagLib.Flac
 {
 	/// <summary>
@@ -171,7 +173,7 @@ namespace TagLib.Flac
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override Tag Tag {
+		public override ITag Tag {
 			get { return tag; }
 		}
 
@@ -281,7 +283,7 @@ namespace TagLib.Flac
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			switch (type) {
 			case TagTypes.Xiph:
@@ -291,7 +293,7 @@ namespace TagLib.Flac
 				return metadata;
 			}
 
-			Tag t = (base.Tag as TagLib.NonContainer.Tag).GetTag (type);
+			ITag t = (base.Tag as TagLib.NonContainer.Tag).GetTag (type);
 
 			if (t != null || !create)
 				return t;

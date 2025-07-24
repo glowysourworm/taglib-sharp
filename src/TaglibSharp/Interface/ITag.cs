@@ -15,6 +15,180 @@ namespace TagLib.Interface
 		TagTypes TagTypes { get; }
 
 		/// <summary>
+		///    Gets the first value contained in <see
+		///    cref="AlbumArtists" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="AlbumArtists" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="AlbumArtists" /> to set the value.
+		/// </remarks>
+		public string FirstAlbumArtist { get; }
+
+		/// <summary>
+		///    Gets the first value contained in <see
+		///    cref="AlbumArtistsSort" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="AlbumArtistsSort" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="AlbumArtistsSort" /> to set the value.
+		/// </remarks>
+		public string FirstAlbumArtistSort { get; }
+
+		/// <summary>
+		///    Gets the first value contained in <see
+		///    cref="Performers" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="Performers" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="Performers" /> to set the value.
+		/// </remarks>
+		public string FirstPerformer { get; }
+
+		/// <summary>
+		///    Gets the first value contained in <see
+		///    cref="PerformersSort" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="PerformersSort" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="PerformersSort" /> to set the value.
+		/// </remarks>
+		public string FirstPerformerSort { get; }
+
+		/// <summary>
+		///    Gets the first value contained in <see
+		///    cref="ComposersSort" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="ComposersSort" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="ComposersSort" /> to set the value.
+		/// </remarks>
+		public string FirstComposerSort { get; }
+
+		/// <summary>
+		///    Gets the first value contained in <see
+		///    cref="Composers" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="Composers" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="Composers" /> to set the value.
+		/// </remarks>
+		public string FirstComposer { get; }
+
+		/// <summary>
+		///    Gets the first value contained in <see cref="Genres" />.
+		/// </summary>
+		/// <value>
+		///    The first <see cref="string" /> object in <see
+		///    cref="Genres" />, or <see langword="null" /> is it
+		///    contains no values.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="Genres" /> to set the value.
+		/// </remarks>
+		public string FirstGenre { get; }
+
+		/// <summary>
+		///    Gets a semicolon separated string containing the values
+		///    in <see cref="AlbumArtists" />.
+		/// </summary>
+		/// <value>
+		///    A semicolon separated <see cref="string" /> object
+		///    containing the values in <see cref="AlbumArtists" />.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="AlbumArtists" /> to set the value.
+		/// </remarks>
+		public string JoinedAlbumArtists { get; }
+
+		/// <summary>
+		///    Gets a semicolon separated string containing the values
+		///    in <see cref="Performers" />.
+		/// </summary>
+		/// <value>
+		///    A semicolon separated <see cref="string" /> object
+		///    containing the values in <see cref="Performers" />.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="Performers" /> to set the value.
+		/// </remarks>
+		public string JoinedPerformers { get; }
+
+		/// <summary>
+		///    Gets a semicolon separated string containing the values
+		///    in <see cref="PerformersSort" />.
+		/// </summary>
+		/// <value>
+		///    A semicolon separated <see cref="string" /> object
+		///    containing the values in <see cref="PerformersSort" />.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="PerformersSort" /> to set the value.
+		/// </remarks>
+		public string JoinedPerformersSort { get; }
+
+		/// <summary>
+		///    Gets a semicolon separated string containing the values
+		///    in <see cref="Composers" />.
+		/// </summary>
+		/// <value>
+		///    A semicolon separated <see cref="string" /> object
+		///    containing the values in <see cref="Composers" />.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="Composers" /> to set the value.
+		/// </remarks>
+		public string JoinedComposers { get; }
+
+		/// <summary>
+		///    Gets a semicolon separated string containing the values
+		///    in <see cref="Genres" />.
+		/// </summary>
+		/// <value>
+		///    A semicolon separated <see cref="string" /> object
+		///    containing the values in <see cref="Genres" />.
+		/// </value>
+		/// <remarks>
+		///    This property is provided for convenience. Use <see
+		///    cref="Genres" /> to set the value.
+		/// </remarks>
+		public string JoinedGenres { get; }
+
+		/// <summary>
 		///    Gets and sets the title for the media described by the current instance.
 		/// </summary>
 		/// <value>
@@ -23,7 +197,7 @@ namespace TagLib.Interface
 		/// <remarks>
 		///    This property is implemented using the "TIT2" Text Information Frame.
 		/// </remarks>
-		string Title { get; }
+		string Title { get; set;  }
 
 		/// <summary>
 		///    Gets and sets the sort names of the Title of the
@@ -38,7 +212,6 @@ namespace TagLib.Interface
 		///    This property is implemented using the "TSOT" Text Information Frame.
 		/// </remarks>
 		string TitleSort { get; set; }
-
 
 		/// <summary>
 		///    Gets and sets a short description, one-liner. 
@@ -85,7 +258,6 @@ namespace TagLib.Interface
 		///    </para>
 		/// </remarks>
 		string Description { get; set; }
-
 
 		/// <summary>
 		///    Gets and sets the performers or artists who performed in
@@ -147,7 +319,6 @@ namespace TagLib.Interface
 		///    delimited list of artists.
 		/// </remarks>
 		string[] PerformersRole { get; set; }
-
 
 		/// <summary>
 		///    Gets and sets the sort names of the band or artist who is 

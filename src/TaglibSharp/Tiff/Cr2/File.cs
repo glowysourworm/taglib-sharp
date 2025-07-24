@@ -25,6 +25,7 @@ using System;
 using TagLib.IFD;
 using TagLib.IFD.Tags;
 using TagLib.Image;
+using TagLib.Interface;
 
 namespace TagLib.Tiff.Cr2
 {
@@ -58,7 +59,7 @@ namespace TagLib.Tiff.Cr2
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 

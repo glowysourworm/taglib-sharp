@@ -1,4 +1,5 @@
 using TagLib;
+using TagLib.Interface;
 
 using File = TagLib.File;
 
@@ -88,12 +89,12 @@ public class Program
 
 		public ImageFile (string path) : base (new LocalFileAbstraction (path)) {}
 
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			throw new NotImplementedException ();
 		}
 
-		public override Properties Properties {
+		public override IProperties Properties {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -109,7 +110,7 @@ public class Program
 			throw new NotImplementedException ();
 		}
 
-		public override Tag Tag {
+		public override ITag Tag {
 			get {
 				throw new NotImplementedException ();
 			}

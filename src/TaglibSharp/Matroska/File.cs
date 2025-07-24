@@ -259,9 +259,9 @@ namespace TagLib.Matroska
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public override TagLib.Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
-			TagLib.Tag ret = null;
+			ITag ret = null;
 			if (type == TagTypes.Matroska)
 				ret = Tag;
 
@@ -281,7 +281,7 @@ namespace TagLib.Matroska
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override TagLib.Tag Tag {
+		public override ITag Tag {
 			get {
 				if (updateTags) {
 					var retag = new Tag[tags.Count];
@@ -312,7 +312,7 @@ namespace TagLib.Matroska
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get {
 				return properties;
 			}

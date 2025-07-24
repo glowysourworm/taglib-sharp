@@ -25,6 +25,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using TagLib.Interface;
+
 namespace TagLib.Mpeg4
 {
 	/// <summary>
@@ -164,7 +166,7 @@ namespace TagLib.Mpeg4
 		///    A <see cref="TagLib.Tag" /> object representing all tags
 		///    stored in the current instance.
 		/// </value>
-		public override Tag Tag {
+		public override ITag Tag {
 			get { return tag; }
 		}
 
@@ -177,7 +179,7 @@ namespace TagLib.Mpeg4
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 
@@ -304,7 +306,7 @@ namespace TagLib.Mpeg4
 		///    At the time of this writing, only <see cref="AppleTag" />
 		///    is supported. All other tag types will be ignored.
 		/// </remarks>
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
 			if (type == TagTypes.Apple) {
 				if (apple_tag == null && create) {

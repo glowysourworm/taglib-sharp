@@ -27,6 +27,7 @@ using TagLib.IFD;
 using TagLib.IFD.Entries;
 using TagLib.IFD.Tags;
 using TagLib.Image;
+using TagLib.Interface;
 using TagLib.Xmp;
 
 namespace TagLib.Tiff
@@ -151,7 +152,7 @@ namespace TagLib.Tiff
 		///    media properties of the file represented by the current
 		///    instance.
 		/// </value>
-		public override Properties Properties {
+		public override IProperties Properties {
 			get { return properties; }
 		}
 

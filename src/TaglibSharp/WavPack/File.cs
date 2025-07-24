@@ -28,6 +28,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.WavPack
 {
 	/// <summary>
@@ -168,9 +170,9 @@ namespace TagLib.WavPack
 		///    <see cref="TagLib.Ape.Tag" /> will be added to the end of
 		///    the file. All other tag types will be ignored.
 		/// </remarks>
-		public override Tag GetTag (TagTypes type, bool create)
+		public override ITag GetTag (TagTypes type, bool create)
 		{
-			Tag t = (Tag as TagLib.NonContainer.Tag).GetTag (type);
+			ITag t = (Tag as TagLib.NonContainer.Tag).GetTag (type);
 
 			if (t != null || !create)
 				return t;

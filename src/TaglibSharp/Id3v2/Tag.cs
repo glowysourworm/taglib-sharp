@@ -2399,7 +2399,7 @@ namespace TagLib.Id3v2
 		///    Information Frame to provide support for a feature of the
 		///    Apple iPod and iTunes products.
 		/// </remarks>
-		public bool IsCompilation {
+		public override bool IsCompilation {
 			get {
 				string val = GetTextAsString (FrameType.TCMP);
 				return !string.IsNullOrEmpty (val) && val != "0";
@@ -2429,7 +2429,7 @@ namespace TagLib.Id3v2
 		/// <exception cref="ArgumentNullException">
 		///    <paramref name="target" /> is <see langword="null" />.
 		/// </exception>
-		public override void CopyTo (TagLib.Tag target, bool overwrite)
+		public override void CopyTo (ITag target, bool overwrite)
 		{
 			if (target == null)
 				throw new ArgumentNullException (nameof (target));

@@ -1481,7 +1481,7 @@ namespace TagLib.Ogg
 		/// <remarks>
 		///    This property is implemented using the "COMPILATION" field.
 		/// </remarks>
-		public bool IsCompilation {
+		public override bool IsCompilation {
 			get {
 				string text;
 

@@ -24,6 +24,8 @@
 using System;
 using System.Collections.Generic;
 
+using TagLib.Interface;
+
 namespace TagLib
 {
 	/// <summary>
@@ -37,7 +39,7 @@ namespace TagLib
 		/// <summary>
 		///    Contains tags to be combined.
 		/// </summary>
-		readonly List<Tag> tags;
+		readonly List<ITag> tags;
 
 		#endregion
 
@@ -55,7 +57,7 @@ namespace TagLib
 		/// </remarks>
 		public CombinedTag ()
 		{
-			tags = new List<Tag> ();
+			tags = new List<ITag> ();
 		}
 
 		/// <summary>
@@ -67,9 +69,9 @@ namespace TagLib
 		///    A <see cref="T:Tag[]" /> containing a collection of tags to
 		///    combine in the new instance.
 		/// </param>
-		public CombinedTag (params Tag[] tags)
+		public CombinedTag (params ITag[] tags)
 		{
-			this.tags = new List<Tag> (tags);
+			this.tags = new List<ITag> (tags);
 		}
 
 		#endregion
@@ -85,7 +87,7 @@ namespace TagLib
 		///    A <see cref="T:Tag[]" /> containing the tags combined in
 		///    the current instance.
 		/// </value>
-		public virtual Tag[] Tags {
+		public virtual ITag[] Tags {
 			get { return tags.ToArray (); }
 		}
 
@@ -129,7 +131,7 @@ namespace TagLib
 		///    <paramref name="index" /> is less than zero or greater
 		///    than the count.
 		/// </exception>
-		protected void InsertTag (int index, Tag tag)
+		protected void InsertTag (int index, ITag tag)
 		{
 			tags.Insert (index, tag);
 		}
@@ -142,7 +144,7 @@ namespace TagLib
 		///    A <see cref="Tag" /> object to add to the collection of
 		///    tags.
 		/// </param>
-		protected void AddTag (Tag tag)
+		protected void AddTag (ITag tag)
 		{
 			tags.Add (tag);
 		}
@@ -155,7 +157,7 @@ namespace TagLib
 		///    A <see cref="Tag" /> object to remove from the
 		///    collection.
 		/// </param>
-		protected void RemoveTag (Tag tag)
+		protected void RemoveTag (ITag tag)
 		{
 			tags.Remove (tag);
 		}
@@ -2111,6 +2113,15 @@ namespace TagLib
 
 				return false;
 			}
+		}
+
+		/// <summary>
+		/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+		/// </summary>
+		public override bool IsCompilation
+		{
+			get { return false; }
+			set { }
 		}
 
 		/// <summary>

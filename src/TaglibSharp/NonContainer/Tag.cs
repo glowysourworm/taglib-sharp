@@ -29,6 +29,8 @@
 
 using System.Collections.Generic;
 
+using TagLib.Interface;
+
 namespace TagLib.NonContainer
 {
 	/// <summary>
@@ -110,9 +112,9 @@ namespace TagLib.NonContainer
 		///    This contains the combined children of <see
 		///    cref="Tag.StartTag" /> and <see cref="Tag.EndTag" />.
 		/// </remarks>
-		public override TagLib.Tag[] Tags {
+		public override ITag[] Tags {
 			get {
-				List<TagLib.Tag> tags = new List<TagLib.Tag> ();
+				List<ITag> tags = new List<ITag> ();
 				tags.AddRange (StartTag.Tags);
 				tags.AddRange (EndTag.Tags);
 				return tags.ToArray ();
@@ -138,7 +140,7 @@ namespace TagLib.NonContainer
 		///    matching tag was found and none was created, <see
 		///    langword="null" /> is returned.
 		/// </returns>
-		public TagLib.Tag GetTag (TagTypes type)
+		public ITag GetTag (TagTypes type)
 		{
 			foreach (TagLib.Tag t in Tags) {
 				if (type == TagTypes.Id3v1 && t is Id3v1.Tag)

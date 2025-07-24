@@ -27,6 +27,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 
+using TagLib.Interface;
+
 namespace TagLib.Asf
 {
 	/// <summary>
@@ -34,7 +36,7 @@ namespace TagLib.Asf
 	///    representation of an ASF tag which can be read from and written
 	///    to disk.
 	/// </summary>
-	public class Tag : TagLib.Tag, IEnumerable<ContentDescriptor>
+	public class Tag : TagLib.Tag, ITag, IEnumerable<ContentDescriptor>
 	{
 		#region Constructors
 
@@ -530,7 +532,13 @@ namespace TagLib.Asf
 			}
 		}
 
-
+		/// <summary>
+		/// Not Implemented for this tag type (see ITag / TagLib.Tag) base class and interface
+		/// </summary>
+		public override bool IsCompilation {
+			get { return false; }
+			set {  }
+		}
 
 		/// <summary>
 		///    Gets and sets the sort names for the Track Title of

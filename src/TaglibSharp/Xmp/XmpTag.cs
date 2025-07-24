@@ -1096,6 +1096,15 @@ namespace TagLib.Xmp
 		}
 
 		/// <summary>
+		/// Not implemented for this tag type (see ITag)
+		/// </summary>
+		public override bool IsCompilation
+		{
+			get { return false; }
+			set { }
+		}
+
+		/// <summary>
 		///    Gets or sets the keywords for the image described
 		///    by the current instance.
 		/// </summary>

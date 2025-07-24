@@ -1,3 +1,5 @@
+using TagLib.Interface;
+
 using File = TagLib.File;
 
 namespace TaglibSharp.Tests.FileFormats
@@ -24,7 +26,7 @@ namespace TaglibSharp.Tests.FileFormats
 			}
 		}
 
-		public static void SetTags (Tag tag)
+		public static void SetTags (ITag tag)
 		{
 			tag.ReplayGainTrackGain = -10.28;
 			tag.ReplayGainTrackPeak = 0.999969;
@@ -32,7 +34,7 @@ namespace TaglibSharp.Tests.FileFormats
 			tag.ReplayGainAlbumPeak = 0.999980;
 		}
 
-		public static void CheckTags (Tag tag)
+		public static void CheckTags (ITag tag)
 		{
 			Assert.AreEqual (-10.28, tag.ReplayGainTrackGain);
 			Assert.AreEqual (0.999969, tag.ReplayGainTrackPeak);

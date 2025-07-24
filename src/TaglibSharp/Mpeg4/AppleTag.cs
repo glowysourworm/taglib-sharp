@@ -99,7 +99,7 @@ namespace TagLib.Mpeg4
 		/// <remarks>
 		///    This property is implemented using the "cpil" data box.
 		/// </remarks>
-		public bool IsCompilation {
+		public override bool IsCompilation {
 			get {
 				foreach (AppleDataBox box in DataBoxes (BoxType.Cpil))
 					return box.Data.ToUInt () != 0;

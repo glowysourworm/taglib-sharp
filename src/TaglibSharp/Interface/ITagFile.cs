@@ -18,7 +18,7 @@ namespace TagLib.Interface
 		///    <para>This property provides generic and general access to the most common tagging features of a file. To access
 		///    or add a specific type of tag in the file, use GetTag(TagLib.TagTypes,bool)</para>
 		/// </remarks>
-		Tag Tag { get; }
+		ITag Tag { get; }
 
 		/// <summary>
 		///    Gets the media properties of the file represented by the current instance.
@@ -26,7 +26,7 @@ namespace TagLib.Interface
 		/// <value>
 		///    A <see cref="TagLib.Properties" /> object containing the media properties of the file represented by the current instance.
 		/// </value>
-		Properties Properties { get; }
+		IProperties Properties { get; }
 
 		/// <summary>
 		///    Gets the tag types contained in the physical file represented by the current instance.
@@ -133,5 +133,10 @@ namespace TagLib.Interface
 		///   The reasons for which this file is marked as corrupt.
 		/// </summary>
 		IEnumerable<string> CorruptionReasons { get; }
+
+		/// <summary>
+		/// Saves file data to disk
+		/// </summary>
+		void Save ();
 	}
 }
