@@ -24,6 +24,8 @@
 using System;
 using System.Collections.Generic;
 
+using TagLib.Interface;
+
 namespace TagLib.Matroska
 {
 	/// <summary>

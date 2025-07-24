@@ -53,6 +53,7 @@
 			January 21, 2019
 			* Lots and lots of updates including net45 and .netstandard 2.0
 		</PackageReleaseNotes>
+		<PackageOutputPath>$(NugetLocalPath)</PackageOutputPath>
 	</PropertyGroup>
 
 </Project>

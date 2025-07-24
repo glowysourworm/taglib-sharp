@@ -24,6 +24,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.Aiff
 {
 	/// <summary>

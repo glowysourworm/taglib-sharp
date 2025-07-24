@@ -29,6 +29,8 @@
 using System;
 using System.Globalization;
 
+using TagLib.Interface;
+
 namespace TagLib.WavPack
 {
 	/// <summary>

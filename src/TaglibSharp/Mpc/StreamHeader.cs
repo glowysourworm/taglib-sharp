@@ -29,6 +29,8 @@
 using System;
 using System.IO;
 
+using TagLib.Interface;
+
 namespace TagLib.MusePack
 {
 	/// <summary>

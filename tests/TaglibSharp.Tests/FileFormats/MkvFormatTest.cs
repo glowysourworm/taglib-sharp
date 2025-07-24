@@ -1,3 +1,5 @@
+using TagLib.Interface;
+
 using File = TagLib.File;
 
 namespace TaglibSharp.Tests.FileFormats

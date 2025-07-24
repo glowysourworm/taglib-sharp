@@ -30,6 +30,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using TagLib.Interface;
+
 namespace TagLib
 {
 	/// <summary>
@@ -38,7 +40,7 @@ namespace TagLib
 	///    and combines codecs to create generic media properties
 	///    for a file.
 	/// </summary>
-	public class Properties : IAudioCodec, IVideoCodec, IPhotoCodec
+	public class Properties : IProperties
 	{
 		#region Private Fields
 

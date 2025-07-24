@@ -2,6 +2,7 @@ using System;
 using System.IO;
 
 using TagLib;
+using TagLib.Interface;
 
 namespace ReadFromUri;
 public class Program

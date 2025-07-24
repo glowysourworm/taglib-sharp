@@ -31,6 +31,8 @@
 using System.Globalization;
 using System.Runtime.ExceptionServices;
 
+using TagLib.Interface;
+
 namespace TagLib
 {
 
@@ -80,7 +82,7 @@ namespace TagLib
 	///    variants, as it automatically detects the appropriate class from
 	///    the file extension or provided mime-type.</para>
 	/// </remarks>
-	public abstract class File : IDisposable
+	public abstract class File : ITagFile, IDisposable
 	{
 		#region Enums
 

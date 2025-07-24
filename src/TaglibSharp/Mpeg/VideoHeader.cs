@@ -23,6 +23,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.Mpeg
 {
 	/// <summary>

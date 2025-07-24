@@ -21,7 +21,7 @@
 // USA
 //
 
-namespace TagLib
+namespace TagLib.Interface
 {
 	/// <summary>
 	///    This interface provides generic information about ab object,

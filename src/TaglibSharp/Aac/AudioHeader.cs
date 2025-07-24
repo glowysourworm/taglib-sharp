@@ -20,6 +20,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.Aac
 {
 	/// <summary>

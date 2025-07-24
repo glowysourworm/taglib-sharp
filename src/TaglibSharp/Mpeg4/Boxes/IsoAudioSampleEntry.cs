@@ -26,6 +26,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 
+using TagLib.Interface;
+
 namespace TagLib.Mpeg4
 {
 	/// <summary>

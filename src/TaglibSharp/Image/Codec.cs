@@ -25,6 +25,8 @@
 
 using System;
 
+using TagLib.Interface;
+
 namespace TagLib.Image
 {
 	/// <summary>

@@ -33,6 +33,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
+using TagLib.Interface;
+
 namespace TagLib.Id3v2
 {
 	/// <summary>
@@ -40,7 +42,7 @@ namespace TagLib.Id3v2
 	///    cref="T:System.Collections.Generic.IEnumerable`1" /> to provide support for reading and
 	///    writing ID3v2 tags.
 	/// </summary>
-	public class Tag : TagLib.Tag, IEnumerable<Frame>, ICloneable
+	public class Tag : TagLib.Tag, ITag, IEnumerable<Frame>, ICloneable
 	{
 		#region Private Static Fields
 

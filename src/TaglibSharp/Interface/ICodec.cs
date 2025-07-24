@@ -28,7 +28,7 @@
 
 using System;
 
-namespace TagLib
+namespace TagLib.Interface
 {
 	/// <summary>
 	///    Indicates the types of media represented by a <see cref="ICodec"
